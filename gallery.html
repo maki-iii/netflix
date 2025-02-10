@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--for body font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="gallery.css">
+    <title>Gallery</title>
+</head>
+<body>
+    <div id="loader">
+        <div class="circle"></div>
+      </div>
+
+      <nav>
+        <ul class="side-bar">
+          <li onclick="hideMenu()"><a href="#"><svg id="close" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+          <li id="center"><a href="home.html">Home</a></li>
+          <li id="center"><a href="story.html">Story</a></li>
+          <li id="center"><a href="gallery.html">Gallery</a></li>
+        </ul>
+        <ul class="top-bar">
+          <li><a href="main.html"><img id="img-logo" src="pics/netflix-logo-.png"></a></li>
+          <li class="links"><a href="home.html">Home</a></li>
+          <li class="links"><a href="story.html">Story</a></li>
+          <li class="links"><a href="gallery.html">Gallery</a></li>
+          <li class="menu" onclick="showMenu()"><a href="#"><svg id="menu" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+        </ul>
+      </nav>
+
+      <div class="container">
+        <div class="pics">
+            <a>
+                <h1 id="h1-image">Pictures&nbsp;&nbsp;</h1>
+                <svg id="image-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                    <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm40-80h480L570-480 450-320l-90-120-120 160Zm-40 80v-560 560Z" />
+                </svg>
+            </a>
+            <div class="container-image">
+              <div class="image"><img src="pics/anniv.jpg" alt=""></div>
+              <div class="image"><img src="pics/baby.jpg" alt=""></div>
+              <div class="image"><img src="pics/circle.jpg" alt=""></div>
+              <div class="image"><img src="pics/first_motmot.jpg" alt=""></div>
+              <div class="image"><img src="pics/photobooth.jpg" alt=""></div>
+              <h1 id="see-all">See all<svg id="right-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg></h1>
+            </div>
+        </div>
+    
+        <div class="vids">
+            <a>
+                <h1 id="h1-video">Videos&nbsp;&nbsp;</h1>
+                <svg id="video-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                    <path d="m380-300 280-180-280-180v360ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                </svg>
+            </a>
+        </div>
+        <div class="pop-up">
+          <span>&times;</span>
+          <div class="con">
+            <img src="pics/anniv.jpg">
+          </div>
+        </div>
+    </div>
+
+      <script>
+        function showMenu() {
+          const sidebar = document.querySelector('.side-bar')
+          sidebar.style.display = 'flex'
+        }
+    
+        function hideMenu() {
+          const sidebar = document.querySelector('.side-bar')
+          sidebar.style.display = 'none'
+        }
+      </script>
+
+      <script>
+        window.addEventListener('load', () => {
+          const loader = document.getElementById('loader');
+          const content = document.getElementById('content');
+      
+          setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+              loader.style.display = 'none'; 
+              content.style.display = 'block'; 
+              document.body.style.overflow = 'auto'; 
+            }, 500); 
+          }, 500); 
+        });
+      </script>
+      
+<script>
+    document.querySelectorAll('.container-image img').forEach(image => {
+      image.onclick = () => {
+        
+        const popUp = document.querySelector('.pop-up');
+        const popUpImage = popUp.querySelector('img');
+        const downloadLink = popUp.querySelector('.dl a');
+
+        popUp.style.display = 'flex';
+        popUpImage.src = image.getAttribute('src');
+      };
+    });
+
+    // Close the popup when clicking the close icon
+    document.querySelector('.pop-up span').onclick = () => {
+      document.querySelector('.pop-up').style.display = 'none';
+    };
+  </script>
+
+</body>
+</html>

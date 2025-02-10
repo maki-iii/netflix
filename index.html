@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--for font family link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!--for css styling link-->
+    <link rel="stylesheet" href="style.css">
+    <!--for css responsive link-->
+    <link rel="stylesheet" href="responsive.css">
+
+    <title>Netflix</title>
+</head>
+<body id="body_main">
+
+    <div id="loader">
+        <div class="circle"></div>
+      </div>
+    
+    <div class="top">
+        <img id="top-img" src="pics/netflix-logo-.png">
+        <h1 id="top-h1">Change picture</h1>
+    </div>
+
+    <div class="profile">
+        <a href="home.html">
+            <img id="profile-img" src="pics/netflix-logo-.png">
+        </a>
+    </div>
+
+    <div class="add">
+        <h1 onclick="showAlert()" id="add-h1">Add profile</h1>
+    </div>
+
+    <input type="file" id="fileInput" style="display: none;">
+
+    <script>
+        function showAlert() {
+            alert("Hi, you don't need to add profile. This is for you only");
+            alert("Just Click the picture!");
+            alert("Btw, you can change the picture of profile, just click the 'Change picture' on the right-top corner");
+        }
+    </script>
+
+<script>
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      const content = document.getElementById('content');
+
+      setTimeout(() => {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+          loader.style.display = 'none'; 
+          content.style.display = 'block'; 
+          document.body.style.overflow = 'auto'; 
+        }, 500); 
+      }, 1000); 
+    });
+  </script>
+
+<script>
+    // Select elements
+    const topH1 = document.getElementById('top-h1');
+    const topImg = document.getElementById('profile-img');
+    const fileInput = document.getElementById('fileInput');
+
+    // Load the saved image from localStorage if it exists
+    const savedImageSrc = localStorage.getItem('topImageSrc');
+    if (savedImageSrc) {
+      topImg.src = savedImageSrc;
+    }
+
+    // Handle click on the top h1
+    topH1.addEventListener('click', () => {
+      fileInput.click(); // Trigger file input
+    });
+
+    // Handle file selection
+    fileInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+
+        // Convert the image file to a base64 URL
+        reader.onload = (e) => {
+          const newSrc = e.target.result;
+
+          // Update the image source
+          topImg.src = newSrc;
+
+          // Save the new image source to localStorage
+          localStorage.setItem('topImageSrc', newSrc);
+        };
+
+        reader.readAsDataURL(file); // Read the file
+      }
+
+      // Reset file input
+      fileInput.value = '';
+    });
+  </script>
+
+</script>
+
+</body>
+</html>
