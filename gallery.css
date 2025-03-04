@@ -144,15 +144,20 @@ nav li:first-child {
     fill: white;
 }
 
+
+/*for image*/
+
 .container-image {
     display: flex;
-    overflow-x: scroll; 
-    scroll-behavior: smooth; 
+    overflow-x: scroll;
+    scroll-behavior: smooth;
     gap: 10px;
 }
+
 .container-image:last-child {
     align-items: center;
 }
+
 .container-image::-webkit-scrollbar {
     height: 2px;
 }
@@ -165,13 +170,52 @@ nav li:first-child {
     background-color: #555;
 }
 
-.container-image img{
-    width: 250px;
-    height: 300px;
+.container-image img {
+    width: 250px;       
+    height: 300px;     
     margin-top: 10px;
     border: 2px solid white;
     cursor: pointer;
 }
+
+
+/*for video*/
+
+.container-video {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    gap: 10px;
+}
+
+.container-video:last-child {
+    align-items: center;
+}
+
+.container-video::-webkit-scrollbar {
+    height: 2px;
+}
+
+.container-video::-webkit-scrollbar-thumb {
+    background-color: white;
+}
+
+.container-video::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+.container-video video {
+    width: 250px;       
+    height: 300px;       
+    object-fit: cover;  
+    cursor: pointer;
+    margin-top: 10px;
+    border: 2px solid white;
+}
+
+
+
+
 #see-all {
     color: white;
     font-size: 15px;
